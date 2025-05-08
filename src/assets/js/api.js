@@ -181,12 +181,10 @@ export async function editMyAccount(data) {
 
 export async function deleteMyAccount() {
   try {
-
     const httpResponse = await fetch(`${apiUrl}/my-account`, {
       method: "DELETE",
       credentials: "include",
     });
-
 
     if (!httpResponse.ok) {
       return null;

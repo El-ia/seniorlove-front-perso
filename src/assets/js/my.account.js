@@ -75,47 +75,47 @@ function addEditButtonsListener() {
    
 // Function to handle the account deletion process
 export async function handleDeleteAccount() {
-    try {
-        //Show confirmation dialog and wait for user response
-        const confirmation = await showConfirmationDialog();
+  try {
+    //Show confirmation dialog and wait for user response
+    const confirmation = await showConfirmationDialog();
 
-        if (confirmation.isConfirmed) {
-            // The user confirmed the deletion
+    if (confirmation.isConfirmed) {
+      // The user confirmed the deletion
 
-            // Call the function to delete the user account
-            const deleteUser = await deleteMyAccount();
+      // Call the function to delete the user account
+      const deleteUser = await deleteMyAccount();
 
-            if (deleteUser) {
-                //Deletion was successful, show success message
-                await showSuccessMessage();
-            } else {
-                // Deletion failed, display error message
-                showErrorMessage('Il y a eu un problème lors de la suppression de votre compte. Veuillez réessayer plus tard.');
-            }
-        } else {
-          // User canceled deletion, show cancellation message
-            showCancelAction();
-        }
-    } catch (error) {
-        // Handling unexpected errors
-        console.error('Erreur lors de la suppression du compte:', error);
-        showErrorMessage('Une erreur inattendue est survenue. Veuillez réessayer plus tard.');
+      if (deleteUser) {
+        //Deletion was successful, show success message
+        await showSuccessMessage();
+      } else {
+        // Deletion failed, display error message
+        showErrorMessage('Il y a eu un problème lors de la suppression de votre compte. Veuillez réessayer plus tard.');
+      }
+    } else {
+      // User canceled deletion, show cancellation message
+      showCancelAction();
     }
+  } catch (error) {
+    // Handling unexpected errors
+    console.error('Erreur lors de la suppression du compte:', error);
+    showErrorMessage('Une erreur inattendue est survenue. Veuillez réessayer plus tard.');
+  }
 }
 
 export function addDeleteButtonListener() {
-    // Delete button CSS selector. Make sure it matches your HTML.
-    const deleteButton = document.querySelector("#app-main .delete-account");
+  // Delete button CSS selector. Make sure it matches your HTML.
+  const deleteButton = document.querySelector("#app-main .delete-account");
 
-    if (!deleteButton) {
-        console.error('Bouton de suppression introuvable!');
-        return;
-    }
+  if (!deleteButton) {
+    console.error('Bouton de suppression introuvable!');
+    return;
+  }
 
-    // Add click event listener to delete button
-    deleteButton.addEventListener('click', async () => {
-        await handleDeleteAccount();
-    });
+  // Add click event listener to delete button
+  deleteButton.addEventListener('click', async () => {
+    await handleDeleteAccount();
+  });
 }
 
 function addLogOutButtonListener(){

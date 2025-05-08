@@ -482,7 +482,6 @@ input[type="text"]:focus {
         grid-row: 1;
         align-self: stretch;
         height: 100%;
-        position: sticky;
         top: var(--spacing-medium);
     }
   
